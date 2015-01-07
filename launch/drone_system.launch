@@ -1,0 +1,8 @@
+<launch>
+	<node pkg="uvc_camera" type="uvc_camera_node" name="uvc_camera_node" ns="web_cam"/>
+	<include file="$(find openni2_launch)/launch/openni2.launch"/>
+	<node pkg="web_video_server" type="web_video_server" name="web_video_server" ns="web_cam" args=" _port:=8181"/>
+	<node name="hokuyo" pkg="hokuyo_node" type="hokuyo_node" ns="laser">
+		<param name="port" type="string" value="/dev/ttyACM0" />
+	</node>
+</launch>

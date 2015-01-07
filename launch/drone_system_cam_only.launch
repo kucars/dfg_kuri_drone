@@ -1,0 +1,4 @@
+<launch>
+	<node pkg="uvc_camera" type="uvc_camera_node" name="uvc_camera_node" ns="web_cam"/>
+	<node pkg="web_video_server" type="web_video_server" name="web_video_server" ns="web_cam" args=" _port:=8181"/>
+</launch>
