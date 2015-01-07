@@ -1,2 +1,2 @@
-# dfg_kuri_drone
+# KURI Drone
 Code Related to Drones for Good Competition
