@@ -25,7 +25,7 @@
     <script src="./js/services.js"></script>
     <script src="https://maps.googleapis.com/maps/api/js"></script>
     <script src="./js/eventemitter2.min.js"></script>
-	<script src="./js/roslib.min.js"></script>
+	<script src="./js/roslib.js"></script>
 	<script>
 		  // Connecting to ROS
 		  // -----------------
@@ -57,7 +57,7 @@
 		  });
 
 		  // Create a connection to the rosbridge WebSocket server.
-		  ros.connect('ws://localhost:8080');
+		  ros.connect('ws://10.0.0.110:8080');
 
 		  // Publishing a Topic
 		  // ------------------
@@ -188,7 +188,7 @@
 			<br />
 			<br />
 			<div class="list card">
-				<img id="raw video" src="http://localhost:8181/stream?topic=/web_cam/image_raw">
+				<img id="raw video" src="http://10.0.0.110:8181/stream?topic=/web_cam/image_raw">
 				</img>
 			</div>
 		</div>
@@ -204,7 +204,7 @@
 			<br />
 			<br />
 			<div class="list card">
-				<img id="video" src="http://localhost:8181/stream?topic=/site_violation_detection/image_raw">
+				<img id="video" src="http://10.0.0.110:8181/stream?topic=/site_violation_detection/image_raw">
 			</div>
 		</div>
 	</script>
@@ -219,7 +219,7 @@
 			<br />
 			<br />
 			<div class="list card">
-				<img id="video" src="http://localhost:8181/stream?topic=/camera/depth/image">
+				<img id="video" src="http://10.0.0.110:8181/stream?topic=/camera/depth/image">
 			</div>
 		</div>
 	</script>
