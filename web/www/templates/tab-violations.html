@@ -1,0 +1,41 @@
+<ion-view title="Violations">
+
+  <ion-content class="padding">
+    <div class="list card">
+	<img src="khalifa-logo.png">
+	</img>
+	</div>
+  	<div class = "list card" >
+	  <h1>Simple roslib Example</h1>
+		<p>Run the following commands in the terminal then refresh this page. Check the JavaScript
+		  console for the output.</p>
+		<ol>
+		  <li><tt>roscore</tt></li>
+		  <li><tt>rostopic pub /listener std_msgs/String "Hello, World"</tt></li>
+		  <li><tt>rostopic echo /cmd_vel</tt></li>
+		  <li><tt>rosrun rospy_tutorials add_two_ints_server</tt></li>
+		  <li><tt>roslaunch rosbridge_server rosbridge_websocket.launch</tt></li>
+		</ol>
+		<div id="statusIndicator">
+		  <p id="connecting">
+			Connecting to rosbridge...
+		  </p>
+		  <p id="connected" style="color:#00D600; display:none">
+			Connected
+		  </p>
+		  <p id="error" style="color:#FF0000; display:none">
+			Error in the backend!
+		  </p>
+		  <p id="closed" style="display:none">
+			Connection closed.
+		  </p>
+	  </div>
+	</div>
+	<div class="buttons">
+	    <button class="button" ng-click="openModal()">Add Violation</button>
+  	</div>
+	  <ion-item ng-repeat="item in toDoListItems">
+	    {{item.task}}
+	  </ion-item>
+  </ion-content>
+</ion-view>

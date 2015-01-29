@@ -1,0 +1,23 @@
+<ion-view title="Way Points" ng-init="init()">
+	<ion-content class="padding">
+    	<div class="list card">
+  			<img src="khalifa-logo.png">
+		 	</img>
+  	   	</div>
+  		<ion-item class="item-toggle">
+  	        Enable Tracking
+  	        <label class="toggle">
+  	          	<input type="checkbox" ng-model="settings.enableTracking" ng-change="alertChange();">
+  	          		<div class="track">
+  	           			<div class="handle">
+  	            		</div>
+  	          		</div>
+  	          	</input>
+  	        </label>
+       	</ion-item>
+ 		<div id="map-canvas">
+ 		</div>
+  	</ion-content>
+</ion-view>
+
+
