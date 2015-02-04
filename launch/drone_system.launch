@@ -1,24 +1,29 @@
 <launch>
-	<node pkg="uvc_camera" type="uvc_camera_node" name="uvc_camera_node" ns="web_cam"/>
-	<include file="$(find rosbridge_server)/launch/rosbridge_websocket.launch"/>
+	<param name="/camera/driver/data_skip" value="5"/>
 	<include file="$(find openni2_launch)/launch/openni2.launch"/>
-	<node pkg="web_video_server" type="web_video_server" name="web_video_server" ns="web_cam" args=" _port:=8181"/>
-	<!--node pkg="site_violation_detection" type="site_violation_detection.py" name="site_violation_detection"/-->
+	<node pkg="uvc_camera" type="uvc_camera_node" name="uvc_camera_node" ns="web_cam" respawn="true" output="screen">
+	    <param name="width" type="int" value="640"/>
+	    <param name="height" type="int" value="480"/>
+	    <param name="fps" type="int" value="5"/>
+	</node>
+	<node pkg="site_violation_detection" type="site_violation_detection.py" name="site_violation_detection" output="screen"/>
 	<node name="hokuyo" pkg="hokuyo_node" type="hokuyo_node" ns="laser">
 		<param name="port" type="string" value="/dev/ttyACM1" />
 	</node>
+	<include file="$(find rosbridge_server)/launch/rosbridge_websocket.launch"/>
+	<node pkg="web_video_server" type="web_video_server" name="web_video_server" ns="web_cam" args=" _port:=8181" output="screen"/>
 	<arg name="fcu_url" default="/dev/ttyACM0:57600" />
 	<arg name="gcs_url" default="udp://10.0.0.110:14555@10.0.0.110:14550" />
 	<arg name="system_id" default="1" />
 	<arg name="component_id" default="50" />
 	<arg name="target_system_id" default="1" />
 	<arg name="target_component_id" default="50" />
-	<include file="$(find mavros)/launch/node.launch">
+	<!--include file="$(find mavros)/launch/node.launch">
 	    <arg name="blacklist_yaml" value="$(find mavros)/launch/apm2_blacklist.yaml" />
 	    <arg name="config_yaml" value="$(find dfg_kuri_drone)/config/apm2_config.yaml" />
 	    <arg name="fcu_url" value="$(arg fcu_url)" />
 	    <arg name="gcs_url" value="$(arg gcs_url)" />
 	    <arg name="tgt_system" value="$(arg target_system_id)" />
 	    <arg name="tgt_component" value="$(arg target_component_id)" />
-	</include>
+	</include-->
 </launch>
