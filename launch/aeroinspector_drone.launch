@@ -1,0 +1,16 @@
+<launch>
+  <param name="/camera/driver/data_skip" value="5"/>
+  <node pkg="uvc_camera" type="uvc_camera_node" name="uvc_camera_node" ns="web_cam" respawn="true" output="screen">
+    <param name="width" type="int" value="640"/>
+    <param name="height" type="int" value="480"/>
+    <param name="fps" type="int" value="5"/>
+  </node>
+  <node pkg="web_video_server" type="web_video_server" name="web_video_server" ns="web_cam" args=" _port:=8181" output="screen"/>
+  <!--node name="hokuyo" pkg="hokuyo_node" type="hokuyo_node" ns="laser">
+    <param name="port" type="string" value="/dev/ttyACM0" />
+    <param name="angle_min" type="double" value="-0.78" />
+    <param name="angle_max" type="double" value="0.78" />
+    <param name="skip" type="int" value="2" />
+  </node-->
+  <node pkg="site_violation_detection" type="site_violation_detection.py" name="site_violation_detection" output="screen"/>
+</launch>
